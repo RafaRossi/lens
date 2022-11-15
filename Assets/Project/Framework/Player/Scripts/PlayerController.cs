@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode interactionKeyCode = KeyCode.E;
     [SerializeField] private KeyCode useItemKeyCode = KeyCode.Mouse0;
     [SerializeField] private KeyCode sprintKeyCode = KeyCode.LeftShift;
+    [SerializeField] private KeyCode flashlightKeyCode = KeyCode.F;
 
     #endregion
 
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private Interactor interactor;
     [SerializeField] private EquipController equipController;
+
+    [SerializeField] private FlashlightController flashlightController;
 
     [SerializeField] private Camera _camera;
 
@@ -47,6 +50,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(useItemKeyCode))
         {
             interactor.UseItem();
+        }
+
+        if (Input.GetKeyDown(flashlightKeyCode))
+        {
+            flashlightController.Toggle();
         }
 
         speed = Input.GetKey(sprintKeyCode) ? sprintSpeed : normalSpeed;
