@@ -51,7 +51,7 @@ public class EquipController : MonoBehaviour
         }
 
         playerInventory.currentEquippedItem = Instantiate(item.EquipablePrefab, playerEquipHolder);
-        
+
         EquipItem(playerEquipHolder.childCount - 1);
     }
     

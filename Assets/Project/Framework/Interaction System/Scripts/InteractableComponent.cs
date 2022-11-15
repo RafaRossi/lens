@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,14 +12,13 @@ public class InteractableComponent : MonoBehaviour, IInteractableComponent
         this.interactable = interactable;
     }
 
-    public void Interact(Interactor interactor)
+    public bool? Interact(Interactor interactor)
     {
-        interactable.Interact(interactor);
+        return interactable.Interact(interactor);
     }
 }
 
-public interface IInteractableComponent
+public interface IInteractableComponent : IInteractable
 {
-    void Initialize(IInteractable interactable);
-    void Interact(Interactor interactor);
+    
 }

@@ -27,7 +27,7 @@ public class SimpleDoor : Door, IItemInteraction
         IsLocked = doorInitialLockedState;
     }
 
-    public override bool Interact(Interactor interactor)
+    public override bool? Interact(Interactor interactor)
     {
         if(rotatingDoor != null) StopCoroutine(rotatingDoor);
 
@@ -44,7 +44,7 @@ public class SimpleDoor : Door, IItemInteraction
                 return true;
             }
         }
-        if (base.Interact(interactor)) return false;
+        if (base.Interact(interactor) ?? false) return false;
 
         rotatingDoor = StartCoroutine(OpenDoor(dot));
         return true;

@@ -82,8 +82,9 @@ public class PlayerInventory : MonoBehaviour
 
             if (!(slot.itemAmount <= 0)) return false;
             slots.Remove(slot);
+            
+            OnItemFullyRemoved?.Invoke(item);
             return true;
-
         }
         
         return false;

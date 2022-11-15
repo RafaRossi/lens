@@ -5,6 +5,5 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    void InitializeInteractableComponent();
-    bool Interact(Interactor interactor);
+    bool? Interact(Interactor interactor);
 }

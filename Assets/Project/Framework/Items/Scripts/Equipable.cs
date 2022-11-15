@@ -3,29 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Equipable : MonoBehaviour, IInteractable
+public abstract class Equipable : Interactable
 {
-    [SerializeField] private InteractableComponent interactableComponent;
     [SerializeField] protected UsableItem item;
     public abstract void Use();
 
-    private void Awake()
+    private void OnEnable()
     {
-        InitializeInteractableComponent();
+        PlayerInventory.OnItemFullyRemoved += OnItemRemovedFromInventory;
+    }
+
+    private void OnDisable()
+    {
+        PlayerInventory.OnItemFullyRemoved -= OnItemRemovedFromInventory;
     }
 
     public UsableItem GetItem() => item;
 
-    public void InitializeInteractableComponent()
+    protected virtual void OnItemRemovedFromInventory(BaseItem item)
     {
-        interactableComponent.Initialize(this);
-    }
-
-    public bool Interact(Interactor interactor)
-    {
-        PlayerInventory.OnPickItem?.Invoke(item);
-        
-        Destroy(gameObject);
-        return true;
+        if(GetItem() == item) Destroy(gameObject);
     }
 }
