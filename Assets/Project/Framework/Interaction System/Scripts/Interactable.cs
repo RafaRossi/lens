@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour, IInteractable
 {
     [SerializeField] protected InteractableComponent interactableComponent;
-    [SerializeField] private bool canInteract = true;
 
     [SerializeField] private string interactionText = string.Empty;
     
@@ -19,7 +18,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
         interactableComponent.Initialize(this);
     }
 
-    public bool CanInteract { get => canInteract; set => canInteract = value; }
+    public bool CanInteract { get => interactableComponent.CanInteract; set => interactableComponent.CanInteract = value; }
     
     public abstract bool? Interact(Interactor interactor);
 

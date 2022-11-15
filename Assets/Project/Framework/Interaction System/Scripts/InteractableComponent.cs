@@ -9,8 +9,9 @@ public class InteractableComponent : MonoBehaviour, IInteractableComponent
     private IInteractable interactable;
 
     [SerializeField] private UnityEvent<bool> OnInteract = new UnityEvent<bool>();
-    
-    public bool CanInteract { get; set; }
+
+    [SerializeField] private bool canInteract = true;
+    public bool CanInteract { get => canInteract; set => canInteract = value; }
     
     public void Initialize(IInteractable interactable)
     {
@@ -19,8 +20,11 @@ public class InteractableComponent : MonoBehaviour, IInteractableComponent
 
     public bool? Interact(Interactor interactor)
     {
+        if (!CanInteract) return false;
+        
         var interaction = interactable.Interact(interactor);
         OnInteract?.Invoke(interaction != null && (bool)interaction);
+        
         return interaction;
     }
 }

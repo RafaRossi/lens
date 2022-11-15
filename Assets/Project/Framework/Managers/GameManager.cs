@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         
         OnChangeAmbientLightEvent?.Invoke(color);
     }
-    
+
     private void OnApplicationFocus(bool hasFocus)
     {
         Cursor.visible = false;
