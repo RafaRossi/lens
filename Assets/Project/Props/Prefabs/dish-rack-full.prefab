@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableComponent: {fileID: 2923950946703169260}
+  canInteract: 1
   cleanPlate: {fileID: 11400000, guid: 31a24a3463cc44b4b9e17220851cd000, type: 2}
   plates:
   - {fileID: 2031988989110727792}
@@ -186,6 +187,7 @@ MonoBehaviour:
   - {fileID: 3289021365306212842}
   - {fileID: 3289021364224237481}
   - {fileID: 3289021365228677564}
+  onFinishDishWashSkyColor: {r: 0.043137256, g: 0.063725494, b: 0.1127451, a: 1}
 --- !u!114 &2923950946703169260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ead15d02eb97e44b3588767743178d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2035252391426238004
 GameObject:
   m_ObjectHideFlags: 0

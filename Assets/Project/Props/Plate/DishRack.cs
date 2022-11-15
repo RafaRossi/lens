@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DishRack : Interactable, IItemInteraction
 {
     [SerializeField] private BaseItem cleanPlate;
 
     [SerializeField] private Transform[] plates;
+    
+    [SerializeField] private Color onFinishDishWashSkyColor;
 
     private int plateCount = 0;
 
@@ -24,8 +27,13 @@ public class DishRack : Interactable, IItemInteraction
         plates[plateCount].gameObject.SetActive(true);
         plateCount++;
 
-        return true;
+        if (plateCount == 5)
+        {
+            GameManager.OnFinishDishWash?.Invoke();
+            GameManager.OnChangeAmbientLight?.Invoke(onFinishDishWashSkyColor);
+        }
 
+        return true;
     }
 
     public bool Interact(BaseItem item)

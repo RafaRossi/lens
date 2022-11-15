@@ -8,7 +8,9 @@ public class InteractableComponent : MonoBehaviour, IInteractableComponent
 {
     private IInteractable interactable;
 
-    [SerializeField] private UnityEvent OnInteract = new UnityEvent();
+    [SerializeField] private UnityEvent<bool> OnInteract = new UnityEvent<bool>();
+    
+    public bool CanInteract { get; set; }
     
     public void Initialize(IInteractable interactable)
     {
@@ -17,8 +19,9 @@ public class InteractableComponent : MonoBehaviour, IInteractableComponent
 
     public bool? Interact(Interactor interactor)
     {
-        OnInteract?.Invoke();
-        return interactable.Interact(interactor);
+        var interaction = interactable.Interact(interactor);
+        OnInteract?.Invoke(interaction != null && (bool)interaction);
+        return interaction;
     }
 }
 

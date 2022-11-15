@@ -20,5 +20,6 @@ public class Item : BaseItem
 public enum ItemType
 {
     Default,
-    Usable
+    Usable,
+    Lens
 }

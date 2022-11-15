@@ -5,7 +5,10 @@ using UnityEngine;
 public abstract class Interactable : MonoBehaviour, IInteractable
 {
     [SerializeField] protected InteractableComponent interactableComponent;
+    [SerializeField] private bool canInteract = true;
 
+    [SerializeField] private string interactionText = string.Empty;
+    
     private void Awake()
     {
         InitializeInteractableComponent();
@@ -16,5 +19,9 @@ public abstract class Interactable : MonoBehaviour, IInteractable
         interactableComponent.Initialize(this);
     }
 
+    public bool CanInteract { get => canInteract; set => canInteract = value; }
+    
     public abstract bool? Interact(Interactor interactor);
+
+    public string GetInteractionText() => interactionText;
 }

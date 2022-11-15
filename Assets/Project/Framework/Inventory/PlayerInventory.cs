@@ -12,6 +12,7 @@ public class PlayerInventory : MonoBehaviour
     
     public static Action<BaseItem> OnPickItem = delegate(BaseItem item) {  };
     public static Action<UsableItem> OnCollectedItem = delegate(UsableItem item) {  };
+    public static Action<Lens> OnCollectedLens = delegate(Lens lens) {  };
 
     public static Func<BaseItem, bool> OnRemoveItem;
     public static Action<BaseItem> OnItemFullyRemoved = delegate(BaseItem item) {  };
@@ -38,6 +39,9 @@ public class PlayerInventory : MonoBehaviour
             
             case ItemType.Usable:
                 AddToInventory(usableItems, item as UsableItem);
+                break;
+            case ItemType.Lens:
+                OnCollectedLens?.Invoke(item as Lens);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
