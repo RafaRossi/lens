@@ -16,17 +16,17 @@ public class LensController : MonoBehaviour
     
     private void Update()
     {
-        if(lens.Count < 0) return;
+        if(lens.Count < 1) return;
         
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             EquipLen(lens[0]);
         }
 
-        if(lens.Count < 1) return;
+        if(lens.Count < 2) return;
         
         if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
+        { 
             EquipLen(lens[1]);
         }
     }
