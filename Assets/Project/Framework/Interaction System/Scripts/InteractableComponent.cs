@@ -23,7 +23,8 @@ public class InteractableComponent : MonoBehaviour, IInteractableComponent
         if (!CanInteract) return false;
         
         var interaction = interactable.Interact(interactor);
-        OnInteract?.Invoke(interaction != null && (bool)interaction);
+        
+        if(interaction == true) OnInteract?.Invoke(true);
         
         return interaction;
     }

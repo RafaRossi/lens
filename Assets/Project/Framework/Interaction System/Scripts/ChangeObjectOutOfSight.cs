@@ -12,6 +12,7 @@ public class ChangeObjectOutOfSight : MonoBehaviour
 
     private void Start()
     {
+        IsActive = false;
         _renderer = GetComponent<Renderer>();
     }
 
