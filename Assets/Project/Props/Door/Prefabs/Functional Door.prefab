@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5570258665541220906, guid: b270cb028cc3681408658fb659bdea42, type: 3}
+  - {fileID: 2100000, guid: 418bdf5be3130ad4b9ddd51b96988935, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableComponent: {fileID: 6517008637903781786}
+  interactionText: 
   animator: {fileID: 1226759551733070455}
   doorInitialLockedState: 0
   doorKey: {fileID: 0}
@@ -202,7 +203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5570258665541220906, guid: b270cb028cc3681408658fb659bdea42, type: 3}
+  - {fileID: 2100000, guid: f622d9df69e884985ba3161ab570c33c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -249,6 +250,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ead15d02eb97e44b3588767743178d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  canInteract: 1
 --- !u!1 &8663741839526319981
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +315,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5570258665541220906, guid: b270cb028cc3681408658fb659bdea42, type: 3}
+  - {fileID: 2100000, guid: 418bdf5be3130ad4b9ddd51b96988935, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

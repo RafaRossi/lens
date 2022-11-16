@@ -10,10 +10,10 @@ public class PlayerController : MonoBehaviour
 {
     #region PlayerInputs
 
-    [SerializeField] private KeyCode interactionKeyCode = KeyCode.E;
-    [SerializeField] private KeyCode useItemKeyCode = KeyCode.Mouse0;
-    [SerializeField] private KeyCode sprintKeyCode = KeyCode.LeftShift;
-    [SerializeField] private KeyCode flashlightKeyCode = KeyCode.F;
+    private KeyCode interactionKeyCode = KeyCode.Mouse0;
+    private KeyCode useItemKeyCode = KeyCode.E;
+    private KeyCode sprintKeyCode = KeyCode.LeftShift;
+    private KeyCode flashlightKeyCode = KeyCode.F;
 
     #endregion
 
@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
 
     #region Movement
 
-    [SerializeField] private float normalSpeed = 8f;
-    [SerializeField] private float sprintSpeed = 10f;
+    [SerializeField] private float normalSpeed = 5f;
+    [SerializeField] private float sprintSpeed = 12f;
 
     private float speed = 0f;
 
