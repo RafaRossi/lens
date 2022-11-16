@@ -8,7 +8,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
 
     [SerializeField] private string interactionText = string.Empty;
     
-    private void Awake()
+    protected virtual void Awake()
     {
         InitializeInteractableComponent();
     }
