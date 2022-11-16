@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour, IInteractable
@@ -7,6 +8,8 @@ public abstract class Interactable : MonoBehaviour, IInteractable
     [SerializeField] protected InteractableComponent interactableComponent;
 
     [SerializeField] private string interactionText = string.Empty;
+    
+    [SerializeField] [CanBeNull] protected AudioSource audioSource;
     
     protected virtual void Awake()
     {

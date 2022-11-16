@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,6 +22,9 @@ public class DishRack : Interactable, IItemInteraction
         if (!Interact(interactor.GetCurrentEquippedItem.GetItem())) return false;
         
         PlayerInventory.OnRemoveItem?.Invoke(cleanPlate);
+        
+        if (audioSource != null)
+            audioSource.Play();
 
         if (plateCount >= plates.Length) return true;
         

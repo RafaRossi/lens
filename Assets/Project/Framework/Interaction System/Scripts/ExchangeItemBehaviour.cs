@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,10 @@ public class ExchangeItemBehaviour : Interactable, IItemInteraction
         PlayerInventory.OnRemoveItem?.Invoke(enterItem);
                 
         PlayerInventory.OnPickItem?.Invoke(exitItem);
+        
+        if (audioSource != null)
+            audioSource.Play();
+        
         return true;
 
     }
