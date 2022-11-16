@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2439269818403275622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.09960001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22ead15d02eb97e44b3588767743178d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  canInteract: 1
 --- !u!114 &-2900606136891865155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,4 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableComponent: {fileID: 4489083611449981668}
+  interactionText: 
   item: {fileID: 11400000, guid: 9e1af783fdf89bd4db9ade4613b1c7c2, type: 2}

@@ -38,7 +38,7 @@ public class EnergyGenerator : TeleportOnInteract
 
         CanInteract = false;
         
-        GameManager.OnChangeAmbientLight?.Invoke(onTurnOnSkyColor);
+        //GameManager.OnChangeAmbientLight?.Invoke(onTurnOnSkyColor);
 
         return true;
 

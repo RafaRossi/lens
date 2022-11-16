@@ -141,8 +141,7 @@ MonoBehaviour:
   postProcessVolume: {fileID: 0}
   initialPostProcessProperties: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823,
     type: 2}
-  lens:
-  - {fileID: 11400000, guid: a39b94d91295a904cad81b61991bb84f, type: 2}
+  lens: []
 --- !u!143 &1343023500216111196
 CharacterController:
   m_ObjectHideFlags: 0

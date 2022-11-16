@@ -21,6 +21,8 @@ public class LensToggleableObject : MonoBehaviour
 
     private void OnLensChanged(Lens len)
     {
+        if(objectToToggle == null) return;
+        
         objectToToggle.SetActive(lensList.Contains(len) ? active : !active);
     }
 }

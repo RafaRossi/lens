@@ -22,6 +22,13 @@ public class LensController : MonoBehaviour
         {
             EquipLen(lens[0]);
         }
+
+        if(lens.Count < 1) return;
+        
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            EquipLen(lens[1]);
+        }
     }
 
     private void OnEnable()

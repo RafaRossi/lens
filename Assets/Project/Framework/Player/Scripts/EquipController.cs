@@ -51,6 +51,7 @@ public class EquipController : MonoBehaviour
         }
 
         playerInventory.currentEquippedItem = Instantiate(item.EquipablePrefab, playerEquipHolder);
+        playerInventory.currentEquippedItem.transform.localPosition = Vector3.zero;
 
         EquipItem(playerEquipHolder.childCount - 1);
     }
