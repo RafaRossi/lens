@@ -12,7 +12,12 @@ public class SimpleDoor : Door, IItemInteraction
     [SerializeField] private UsableItem doorKey;
 
     [SerializeField] private GameObject interiorDoor;
-    private float openDoorTime = 10f;
+
+    [SerializeField] private AnimationCurve openCurve;
+    [SerializeField] private AnimationCurve closeCurve;
+    
+    private float openDoorTime = 1f;
+    private float closeDoorTime = 0.4f;
 
     private float intialInteriorDoorRotation = 0f;
 
@@ -29,7 +34,11 @@ public class SimpleDoor : Door, IItemInteraction
 
     public override bool? Interact(Interactor interactor)
     {
-        if(rotatingDoor != null) StopCoroutine(rotatingDoor);
+        if (rotatingDoor != null)
+        {
+            StopCoroutine(rotatingDoor);
+            audioSource?.Stop();
+        }
 
         var doorTransformDirection = transform.TransformDirection(Vector3.forward);
         var playerTransformDirection = interactor.transform.position - transform.position;
@@ -68,17 +77,29 @@ public class SimpleDoor : Door, IItemInteraction
         {
             interiorDoorRotation.y -= 360f * Mathf.Sign(interiorDoorRotation.y - desiredRotation);
         }
-        
-        while (Mathf.Abs(interiorDoorRotation.y - desiredRotation) > 0.5f)
+
+        PlayRandomSound(openSounds);
+
+        float diff;
+        var doorTime = isOpen ? openDoorTime : closeDoorTime;
+        var doorCurve = isOpen ? openCurve : closeCurve;
+        var initialY = interiorDoorRotation.y;
+
+        do
         {
-            interiorDoorRotation.y = Mathf.Lerp(interiorDoorRotation.y, desiredRotation, elapsedTime/openDoorTime);
+            interiorDoorRotation.y = Mathf.Lerp(initialY, desiredRotation, doorCurve.Evaluate(elapsedTime / doorTime));
 
             elapsedTime += Time.deltaTime;
-            
+
             interiorDoor.transform.eulerAngles = interiorDoorRotation;
 
+            diff = Mathf.Abs(interiorDoorRotation.y - desiredRotation);
+
             yield return null;
-        }
+        } while (diff > 0.5f);
+        
+        if (!isOpen)
+            PlayRandomSound(closeSound);
     }
 
     public bool Interact(BaseItem item)
