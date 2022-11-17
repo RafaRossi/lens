@@ -39,6 +39,11 @@ public class EnergyGenerator : TeleportOnInteract
         CanInteract = false;
         
         //GameManager.OnChangeAmbientLight?.Invoke(onTurnOnSkyColor);
+        
+        GameManager.OnTurnOnGenerator?.Invoke();
+        
+        if (audioSource != null)
+            audioSource.Play();
 
         return true;
 
