@@ -10,6 +10,7 @@ public class SimpleDoor : Door, IItemInteraction
 
     [SerializeField] private bool doorInitialLockedState = true;
     [SerializeField] private UsableItem doorKey;
+    [SerializeField] private bool removeKeyFromInventory;
 
     [SerializeField] private GameObject interiorDoor;
 
@@ -62,6 +63,8 @@ public class SimpleDoor : Door, IItemInteraction
     private void UnlockDoor()
     {
         IsLocked = false;
+
+        if (removeKeyFromInventory) PlayerInventory.OnRemoveItem?.Invoke(doorKey);
     }
 
     private IEnumerator OpenDoor(float dot)
