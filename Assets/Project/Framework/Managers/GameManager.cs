@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static Action<Color> OnChangeAmbientLight = delegate(Color color) {  };
     public static Action OnFinishDishWash = delegate {  };
     public static Action OnTurnOnGenerator = delegate {  };
+    
     [SerializeField] private UnityEvent OnFinishDishWashEvent = new UnityEvent();
     [SerializeField] private UnityEvent OnTurnOnGeneratorEvent = new UnityEvent();
     [SerializeField] private UnityEvent<Color> OnChangeAmbientLightEvent = new UnityEvent<Color>();
