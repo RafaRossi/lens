@@ -10,12 +10,9 @@ public class SceneManager : MonoBehaviour
         
         while (asyncOperation.progress < 0.9f)
         {
-            Debug.Log(asyncOperation.progress);
             yield return null;
         }
-        
-        Debug.Log("Finish");
-        
+
         if (useFade)
         {
             FadeManager.FadeIn();

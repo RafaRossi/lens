@@ -13,7 +13,7 @@ public class Pickable : Interactable
         
         Destroy(gameObject);
 
-        return null;
+        return true;
     }
 
     public BaseItem GetItem() => item;
