@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour
 {
     public static Action<Color> OnChangeAmbientLight = delegate(Color color) {  };
     public static Action OnFinishDishWash = delegate {  };

@@ -20,12 +20,12 @@ public class EnergyGenerator : TeleportOnInteract
 
     private void OnEnable()
     {
-        GameManager.OnFinishDishWash += ToggleState;
+        TutorialManager.OnFinishDishWash += ToggleState;
     }
 
     private void OnDisable()
     {
-        GameManager.OnFinishDishWash += ToggleState;
+        TutorialManager.OnFinishDishWash += ToggleState;
     }
 
     public override bool? Interact(Interactor interactor)
@@ -40,7 +40,7 @@ public class EnergyGenerator : TeleportOnInteract
         
         //GameManager.OnChangeAmbientLight?.Invoke(onTurnOnSkyColor);
         
-        GameManager.OnTurnOnGenerator?.Invoke();
+        TutorialManager.OnTurnOnGenerator?.Invoke();
         
         if (audioSource != null)
             audioSource.Play();

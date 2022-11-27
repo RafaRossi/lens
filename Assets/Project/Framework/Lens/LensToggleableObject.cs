@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class LensToggleableObject : MonoBehaviour
 {
-    [SerializeField] private List<Lens> lensList = new List<Lens>();
-    [SerializeField] private GameObject objectToToggle;
-    [SerializeField] private bool active;
+    [SerializeField] private ToggleableObject[] toggleableObjects;
 
     private void Start()
     {
@@ -21,8 +19,19 @@ public class LensToggleableObject : MonoBehaviour
 
     private void OnLensChanged(Lens len)
     {
-        if(objectToToggle == null) return;
+        foreach (var toggleableObject in toggleableObjects)
+        {
+            if(toggleableObject.objectToToggle == null) return;
         
-        objectToToggle.SetActive(lensList.Contains(len) ? active : !active);
+            toggleableObject.objectToToggle.SetActive(toggleableObject.lensList.Contains(len) ? toggleableObject.activeState : !toggleableObject.activeState);
+        }
     }
+}
+
+[Serializable]
+public struct ToggleableObject
+{
+    public List<Lens> lensList;
+    public GameObject objectToToggle;
+    public bool activeState;
 }
