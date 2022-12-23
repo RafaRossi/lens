@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: m_glass
+  m_Name: m_glass_green
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _SPECULAR_SETUP
@@ -110,8 +110,8 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.07508005, g: 0.48244795, b: 0.6981132, a: 1}
-    - _Color: {r: 0.075080015, g: 0.48244786, b: 0.6981132, a: 1}
+    - _BaseColor: {r: 0.10780442, g: 0.6862745, b: 0, a: 1}
+    - _Color: {r: 0.10780438, g: 0.68627447, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
