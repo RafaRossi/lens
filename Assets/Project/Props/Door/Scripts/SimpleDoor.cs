@@ -10,7 +10,7 @@ public class SimpleDoor : Door, IItemInteraction
 
     [SerializeField] private bool doorInitialLockedState = true;
     [SerializeField] private UsableItem doorKey;
-    [SerializeField] private bool removeKeyFromInventory;
+    [SerializeField] private bool removeKeyFromInventory = false;
 
     [SerializeField] private GameObject interiorDoor;
 
@@ -22,13 +22,13 @@ public class SimpleDoor : Door, IItemInteraction
 
     private float intialInteriorDoorRotation = 0f;
 
-    private bool isOpen = false;
+    public bool isOpen = false;
 
     private Coroutine rotatingDoor;
     
     private void Start()
     {
-        intialInteriorDoorRotation = interiorDoor.transform.eulerAngles.y;
+        intialInteriorDoorRotation = interiorDoor == null ? 0 : interiorDoor.transform.eulerAngles.y;
         
         IsLocked = doorInitialLockedState;
     }
@@ -114,5 +114,13 @@ public class SimpleDoor : Door, IItemInteraction
         UnlockDoor();
 
         return true;
+    }
+
+    public void Interact()
+    {
+        if (!IsLocked)
+        {
+            isOpen = !isOpen;
+        }
     }
 }

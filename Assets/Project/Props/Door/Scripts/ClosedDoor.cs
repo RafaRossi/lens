@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class ClosedDoor : Door
 {
-    protected override bool IsLocked => true;
+    public override bool IsLocked => true;
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.TestTools;
 using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
 
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     #region Components
 
-    [SerializeField] private CharacterController controller;
+    [SerializeField] public CharacterController controller;
     [SerializeField] private Interactor interactor;
     [SerializeField] private EquipController equipController;
 

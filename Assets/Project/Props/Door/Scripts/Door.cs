@@ -14,7 +14,7 @@ public abstract class Door : Interactable
 
     protected virtual string ClosedAnimationName { get; set; } = "door_locked";
 
-    protected virtual bool IsLocked { get; set; } = false;
+    public virtual bool IsLocked { get; protected set; } = false;
     
 
     public override bool? Interact(Interactor interactor)

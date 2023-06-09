@@ -68,6 +68,16 @@ public class PlayerInventory : MonoBehaviour
             OnCollectedItem?.Invoke(item);
     }
 
+    public List<ItemSlot> GetInventory(BaseItem item)
+    {
+        return item.ItemType switch
+        {
+            ItemType.Default => carryableItems,
+            ItemType.Usable => usableItems,
+            _ => null
+        };
+    }
+
     private bool RemoveItem(BaseItem item)
     {
         return item.ItemType switch

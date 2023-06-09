@@ -18,6 +18,7 @@ public abstract class Interactable : MonoBehaviour, IInteractable
 
     public void InitializeInteractableComponent()
     {
+        if (interactableComponent == null) interactableComponent = gameObject.AddComponent<InteractableComponent>();
         interactableComponent.Initialize(this);
     }
 

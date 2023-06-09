@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class FlashlightController : MonoBehaviour
 {
-    [SerializeField] private Flashlight flashlight;
+    [field:SerializeField] public Flashlight flashlight { get; private set; }
 
+    public void Initialize()
+    {
+        if (flashlight == null) flashlight = new GameObject().AddComponent<Flashlight>();
+    }
+    
     public bool Toggle(bool? isOn = null)
     {
         if(isOn == null)
