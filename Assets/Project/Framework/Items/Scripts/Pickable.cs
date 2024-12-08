@@ -7,9 +7,13 @@ public class Pickable : Interactable
 {
     [SerializeField] protected BaseItem item;
 
+    public Action onItemPicked = null;
+
     public override bool? Interact(Interactor interactor)
     {
         PlayerInventory.OnPickItem?.Invoke(item);
+        
+        onItemPicked?.Invoke();
         
         Destroy(gameObject);
 

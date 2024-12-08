@@ -60,6 +60,36 @@ public class SimpleDoor : Door, IItemInteraction
         return true;
     }
 
+    public void OpenDoor(bool makeSound = true)
+    {
+        IsLocked = false;
+
+        if(isOpen) return;
+        
+        if (rotatingDoor != null)
+        {
+            StopCoroutine(rotatingDoor);
+            audioSource?.Stop();
+        }
+
+        rotatingDoor = StartCoroutine(OpenDoor(0f, makeSound));
+    }
+    
+    public void LockDoor(bool makeSound = true)
+    {
+        IsLocked = true;
+        
+        if(!isOpen) return;
+
+        if (rotatingDoor != null)
+        {
+            StopCoroutine(rotatingDoor);
+            audioSource?.Stop();
+        }
+
+        rotatingDoor = StartCoroutine(OpenDoor(-90f, makeSound));
+    }
+    
     private void UnlockDoor()
     {
         IsLocked = false;
@@ -67,7 +97,7 @@ public class SimpleDoor : Door, IItemInteraction
         if (removeKeyFromInventory) PlayerInventory.OnRemoveItem?.Invoke(doorKey);
     }
 
-    private IEnumerator OpenDoor(float dot)
+    private IEnumerator OpenDoor(float dot, bool makeSound = true)
     {
         var elapsedTime = 0f;
         
@@ -81,7 +111,7 @@ public class SimpleDoor : Door, IItemInteraction
             interiorDoorRotation.y -= 360f * Mathf.Sign(interiorDoorRotation.y - desiredRotation);
         }
 
-        PlayRandomSound(openSounds);
+        if(makeSound) PlayRandomSound(openSounds);
 
         float diff;
         var doorTime = isOpen ? openDoorTime : closeDoorTime;
@@ -101,7 +131,7 @@ public class SimpleDoor : Door, IItemInteraction
             yield return null;
         } while (diff > 0.5f);
         
-        if (!isOpen)
+        if (!isOpen && makeSound)
             PlayRandomSound(closeSound);
     }
 

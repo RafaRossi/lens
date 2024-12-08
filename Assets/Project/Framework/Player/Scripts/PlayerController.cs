@@ -9,15 +9,6 @@ using Cursor = UnityEngine.Cursor;
 
 public class PlayerController : MonoBehaviour
 {
-    #region PlayerInputs
-
-    private KeyCode interactionKeyCode = KeyCode.Mouse0;
-    private KeyCode useItemKeyCode = KeyCode.E;
-    private KeyCode sprintKeyCode = KeyCode.LeftShift;
-    private KeyCode flashlightKeyCode = KeyCode.F;
-
-    #endregion
-
     #region Components
 
     [SerializeField] public CharacterController controller;
@@ -41,24 +32,28 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    public static PlayerState CurrentPlayerState = PlayerState.Idle;
+
     private void Update()
     {
-        if (Input.GetKeyDown(interactionKeyCode))
+        if(CurrentPlayerState != PlayerState.Idle) return;
+        
+        if (Input.GetKeyDown(PlayerInput.InteractionKeyCode))
         {
             interactor.Interact();
         }
 
-        if (Input.GetKeyDown(useItemKeyCode))
+        if (Input.GetKeyDown(PlayerInput.UseItemKeyCode))
         {
             interactor.UseItem();
         }
 
-        if (Input.GetKeyDown(flashlightKeyCode))
+        if (Input.GetKeyDown(PlayerInput.FlashlightKeyCode))
         {
             flashlightController.Toggle();
         }
 
-        speed = Input.GetKey(sprintKeyCode) ? sprintSpeed : normalSpeed;
+        speed = Input.GetKey(PlayerInput.SprintKeyCode) ? sprintSpeed : normalSpeed;
         direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
@@ -76,4 +71,19 @@ public class PlayerController : MonoBehaviour
         
         controller.Move(velocity);
     }
+}
+
+public enum PlayerState
+{
+    Idle,
+    Interacting
+}
+
+public struct PlayerInput
+{
+    public static KeyCode InteractionKeyCode => KeyCode.Mouse0;
+    public static KeyCode UseItemKeyCode => KeyCode.E;
+    public static KeyCode SprintKeyCode => KeyCode.LeftShift;
+    public static KeyCode FlashlightKeyCode => KeyCode.F;
+    public static KeyCode CancelInteractionKeyCode => KeyCode.Escape;
 }

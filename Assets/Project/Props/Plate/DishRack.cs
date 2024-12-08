@@ -33,8 +33,8 @@ public class DishRack : Interactable, IItemInteraction
 
         if (plateCount == 5)
         {
-            GameManager.OnFinishDishWash?.Invoke();
-            GameManager.OnChangeAmbientLight?.Invoke(onFinishDishWashSkyColor);
+            TutorialManager.OnFinishDishWash?.Invoke();
+            TutorialManager.OnChangeAmbientLight?.Invoke(onFinishDishWashSkyColor);
         }
 
         return true;
