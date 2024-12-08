@@ -6,6 +6,9 @@ using UnityEngine;
 public abstract class Equipable : Interactable
 {
     [SerializeField] protected UsableItem item;
+    
+    public Action OnItemEquiped = delegate {  };
+    
     public abstract void Use();
 
     private void OnEnable()

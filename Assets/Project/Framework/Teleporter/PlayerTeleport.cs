@@ -27,4 +27,9 @@ public class PlayerTeleport : MonoBehaviour
 
         controller.enabled = true;
     }
+
+    public void TeleportAfterTime(float time)
+    {
+        Invoke("Teleport", time);
+    }
 }
